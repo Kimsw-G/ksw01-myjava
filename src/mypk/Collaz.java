@@ -1,11 +1,13 @@
+package mypk;
+
 public class Collaz{
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        CollazSolution sol = new CollazSolution();
         System.out.println(sol.solution(6));
     }
 }
 
-class Solution {
+class CollazSolution {
     public int solution(int num) {
         int answer = 0;
         long long_num = (long)num;

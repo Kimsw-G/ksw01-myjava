@@ -1,9 +1,9 @@
 package mypk;
 
 
-public class App {
+public class Colla {
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        CollaSolution sol = new CollaSolution();
         int a = 2;
         int b = 1;
         int n = 20;
@@ -13,7 +13,7 @@ public class App {
 
 }
 
-class Solution {
+class CollaSolution {
     private int extra = 0;
     public int solution(int a, int b, int n) {
         int answer = 0;
@@ -34,7 +34,6 @@ class Solution {
             n+=extra;
             extra=0;
             exchanged = n/a*b;
-            System.out.println("창고 꺼냄!"+exchanged);
         }
         extra+=n%a;
         return exchanged;
