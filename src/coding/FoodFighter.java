@@ -1,4 +1,5 @@
-package mypk;
+package coding;
+
 
 public class FoodFighter {
     public static void main(String[] args) {

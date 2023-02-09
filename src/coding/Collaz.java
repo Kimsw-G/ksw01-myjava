@@ -1,4 +1,5 @@
-package mypk;
+package coding;
+
 
 public class Collaz{
     public static void main(String[] args) {

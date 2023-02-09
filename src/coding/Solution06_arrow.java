@@ -1,3 +1,4 @@
+package coding;
 import java.util.Arrays;
 
 public class Solution06_arrow {

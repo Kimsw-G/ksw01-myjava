@@ -1,3 +1,5 @@
+package coding;
+
 // 프로그래머스 lv2 점찍기
 public class Solution01_dot {
 

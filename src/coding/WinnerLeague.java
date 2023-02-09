@@ -1,4 +1,4 @@
-package mypk;
+package coding;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
