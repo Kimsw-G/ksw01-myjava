@@ -1,31 +1,34 @@
 package mypk;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Imsi{
+import javax.swing.JFrame;
+
+public class Imsi {
     public static void main(String[] args) {
+        // new MyFrame();
+        int a = 0;
+        try {
+            a = 10;
+            throw new Exception();
+        } catch (Exception e) {
+        }
+        System.out.println(a);
+    }
+}
+
+class MyFrame extends JFrame{
+
+    public MyFrame() {
         
-
-        B b = new B();
-        // b.hello();
-        // b.hi();
-
-        int[] a= {1,2,3,4};
-        List<Integer> list = Arrays.asList(new Integer[] {1,2,3,4,5});
-        list.add(6);
-
+        setTitle("banana");
+        setSize(300,200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
-}
 
-class A{
-    void hello(){
-        System.out.println("I'm a");
-    }
-}
-class B extends A{
-
-    void hi(){
-        System.out.println("I'm b");
-    }
+    
+    
 }
