@@ -25,10 +25,17 @@ public class NewChat {
     public static void main(String[] args) {
         String serverIP = JOptionPane.showInputDialog("Input Server IP", DEFAULT_IP);
         String nickname = JOptionPane.showInputDialog("Nickname");
+        if (nickname == null) {
+            return;
+        } else if (nickname.isEmpty()) {
+            System.out.println("빈값");
+        } else {
+            System.out.println("굿");
+        }
 
-        
         new NewChat().init(serverIP, nickname);
     }
+
     public void init(String serverIP, String nickname) {
         JFrame frame = new JFrame("Chat Client");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +72,7 @@ public class NewChat {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    out.writeUTF(String.format("[%s] %s",nickname,textField.getText()));
+                    out.writeUTF(String.format("[%s] %s", nickname, textField.getText()));
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -77,7 +84,7 @@ public class NewChat {
     class Receiver extends Thread {
         DataInputStream in;
         Socket socket;
-    
+
         protected Receiver(Socket socket) {
             try {
                 this.in = new DataInputStream(socket.getInputStream());
@@ -87,12 +94,12 @@ public class NewChat {
             }
             ;
         }
-    
+
         @Override
         public void run() {
             while (in != null) {
                 try {
-                    textArea.append(in.readUTF()+"\n");
+                    textArea.append(in.readUTF() + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                     break;

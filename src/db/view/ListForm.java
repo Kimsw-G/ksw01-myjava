@@ -22,7 +22,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import db.controller.MainController;
-import db.doa.MemberDao;
+import db.dao.MemberDao;
 import db.entity.MemberEntity;
 
 public class ListForm extends JFrame implements BaseForm {
@@ -99,6 +99,7 @@ public class ListForm extends JFrame implements BaseForm {
                     int mno = Integer.parseInt((String)tblMember.getValueAt(tblMember.getSelectedRow(), 0));
                     System.out.println("pk : " + mno);
                     // System.out.println("Main to Login");
+                    dispose();
                     MainController.getInstance().getController("Update",mno);
                 }
             }

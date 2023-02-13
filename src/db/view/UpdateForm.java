@@ -2,7 +2,7 @@ package db.view;
 
 
 import db.controller.MainController;
-import db.doa.MemberDao;
+import db.dao.MemberDao;
 import db.entity.MemberEntity;
 
 import javax.swing.*;
@@ -14,7 +14,7 @@ public class UpdateForm extends JFrame implements BaseForm{
     private JTextField txtMname;
     private JPasswordField txtMpass, txtMpassChk;
     private JTextField[] txtMphone;
-    private JButton btnJoin, btnCancel;
+    private JButton btnUpdate, btnCancel;
 
     private MemberDao memberDao = new MemberDao();
 
@@ -100,8 +100,8 @@ public class UpdateForm extends JFrame implements BaseForm{
         ViewConfig.centerLable(lblMale,15);
         lblMale.setBounds(labelX+labelWidht+10,labelY,textWidht/2,height);
 
-        btnJoin = new JButton("수정하기");
-        btnJoin.setBounds(headX,labelY+=height+5,headWidth/2-10,height);
+        btnUpdate = new JButton("수정하기");
+        btnUpdate.setBounds(headX,labelY+=height+5,headWidth/2-10,height);
 
         btnCancel = new JButton("취소");
         btnCancel.setBounds(headX+headWidth/2+10,labelY,headWidth/2-10,height);
@@ -126,10 +126,10 @@ public class UpdateForm extends JFrame implements BaseForm{
         add(lblMale);
 
 
-        add(btnJoin);
+        add(btnUpdate);
         add(btnCancel);
 
-        btnJoin.addActionListener(e->{
+        btnUpdate.addActionListener(e->{
             String mname = txtMname.getText().trim();
             String mid = txtMid.getText().trim();
             String mpass = new String(txtMpass.getPassword()).trim();
@@ -137,10 +137,13 @@ public class UpdateForm extends JFrame implements BaseForm{
             String mphone = txtMphone[0].getText().trim() + txtMphone[1].getText().trim() + txtMphone[2].getText().trim();
             boolean blankChk = mname.equals("") || mid.equals("") || mpass.equals("") || mpassChk.equals("") || mphone.equals("");
             if (blankChk) {
-                JOptionPane.showMessageDialog(btnJoin, "빈값이 있어요");
+                JOptionPane.showMessageDialog(btnUpdate, "빈값이 있어요");
             }else if(!mpass.equals(mpassChk)){
-                JOptionPane.showMessageDialog(btnJoin, "비밀번호가 일치하지 않아요");
+                JOptionPane.showMessageDialog(btnUpdate, "비밀번호가 일치하지 않아요");
             }
+            memberDao.updateMember(new MemberEntity(mno, mname, mid, mpass, mphone, null));
+            dispose();
+            MainController.getInstance().getController("List");
         });
         btnCancel.addActionListener(e->{
             dispose();

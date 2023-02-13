@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import db.controller.MainController;
-import db.doa.MemberDao;
+import db.dao.MemberDao;
 import db.entity.MemberEntity;
 
 public class LoginForm extends JFrame implements BaseForm{

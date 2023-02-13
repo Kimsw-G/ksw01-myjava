@@ -1,6 +1,6 @@
 package db.imsi;
 
-import db.doa.DBCon;
+import db.dao.DBCon;
 import db.entity.MemberEntity;
 
 public class DBTest {

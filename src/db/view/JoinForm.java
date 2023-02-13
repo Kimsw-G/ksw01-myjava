@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import db.controller.MainController;
-import db.doa.MemberDao;
+import db.dao.MemberDao;
 import db.entity.MemberEntity;
 
 import javax.swing.JPasswordField;
