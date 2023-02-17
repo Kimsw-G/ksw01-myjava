@@ -55,11 +55,7 @@ public class TCPChatClient extends BaseFrm{
             }
         });
     }
-    @Override
-    public void arrange(){
-        add(scp.CENTER_ALIGNMENT);
-        
-    }
+
 
     private class Receiver extends Thread {
         DataInputStream in;

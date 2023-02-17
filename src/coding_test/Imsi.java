@@ -9,34 +9,54 @@ public class Imsi {
         ImsiSolution s = new ImsiSolution();
 
         // System.out.println(Arrays.toString(s.solution(info)));
-        System.out.println(s.solution(info));
+        // System.out.println(s.solution("AAAAE"));
+        // System.out.println(s.plusHexadecimal("45555"));
+        s.configData();
+        System.out.println(s.wordToNum("AAAE"));
 
     }
 }
 
 class ImsiSolution {
-    public int solution(int[][] dots) {
+    Character[] datas = { ' ', 'A', 'E', 'I', 'O', 'U' };
+    List<Character> dataList = Arrays.asList(datas);
+    List<String> list;
+
+    public int solution(String word) {
         int answer = 0;
-        double[] lengths = new double[6];
-        int cnt = 0;
-        for (int i = 0; i < dots.length-1; i++) {
-            for (int j = i+1; j < dots.length; j++) {
-                lengths[cnt++] = calcLength(dots[i], dots[j]);
-            }
-        }
-        Arrays.sort(lengths);
-        System.out.println(Arrays.toString(lengths));
-        answer = (int)(lengths[0] * lengths[2]);
 
         return answer;
     }
 
-    public double calcLength(int[] dot1, int[] dot2) {
-        int x = (dot1[0] - dot2[0]);
-        int y = (dot1[1] - dot2[1]);
-        x = x*x;
-        y = y*y;
-        return Math.sqrt(x+y);
+    public void configData() {
+        list = new ArrayList<String>();
+        String str = "00000";
+        while(!str.equals("01112")){
+            list.add(str);
+            str = plusHexadecimal(str);
+            System.out.println(str);
+        }
+    }
+    public String plusHexadecimal(String hexadecimal){
+        int iVal = Integer.parseInt(hexadecimal);
+        iVal++;
+        hexadecimal = String.format("%05d",iVal);
+        while(hexadecimal.contains("6")){
+            char[] hex = hexadecimal.toCharArray();
+            hex[hexadecimal.indexOf("6")] = '0';
+            hex[hexadecimal.indexOf("6")-1] +=1;
+            hexadecimal = new String(hex);
+        }
+        return hexadecimal;
+    }
+    // 00000
+    // 00001
+    public String wordToNum(String str){
+        String result = "";
+        for (char c : str.toCharArray()) {
+            result += dataList.indexOf(c);
+        }
+        return result;
     }
 
 }
